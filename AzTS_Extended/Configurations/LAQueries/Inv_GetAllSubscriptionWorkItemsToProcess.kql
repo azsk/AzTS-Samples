@@ -1,0 +1,7 @@
+﻿AzSK_SubInventory_CL
+| where TimeGenerated > ago(2d)
+| where JobId_d ==  toint(format_datetime(now(), 'yyyyMMdd'))
+| where State_s != 'Disabled'
+| summarize arg_max(TimeGenerated, *) by SubscriptionId
+| project SubscriptionId
+| distinct SubscriptionId
