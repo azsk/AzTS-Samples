@@ -18,11 +18,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="0.0.Microsoft.AzSK.ATS.Extensions" Version="1.0.8" />
-      <PackageReference Include="AzTSScanner" Version="1.0.25" />
-    </ItemGroup>
-
-    <ItemGroup>
         <None Update="appsettings.RingN.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
