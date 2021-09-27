@@ -10,7 +10,7 @@
     using System.Linq;
     using System.Text;
 
-    class FeatureNameEvaluatorExt : FeatureNameEvaluator
+    class FeatureNameEvaluatorExt : BaseControlEvaluator
     {
  
     }
