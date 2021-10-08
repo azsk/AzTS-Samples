@@ -3,5 +3,13 @@
   "Reference": "",
   "IsMaintenanceMode": false,
   "Controls": [
+    {
+      "ControlID": "",
+      "Id": "",
+      "Automated": "Yes",
+      "MethodName": "",
+      "DisplayName": "",
+      "Enabled": 
+    }
   ]
 }
