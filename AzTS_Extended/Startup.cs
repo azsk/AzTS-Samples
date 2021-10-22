@@ -62,7 +62,6 @@ namespace AzTS_Extended
             var laQueryFilesPath = Path.Combine(configurationRootPath, "LAQueries");
             _configuration = builder.ConfigurationBuilder
                 .AddJsonFile(Path.Combine(configurationRootPath, "appsettings.json"), optional: false, reloadOnChange: true)
-                .AddJsonFile(Path.Combine(configurationRootPath, $"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json"), optional: false, reloadOnChange: true)
                 .AddKeyPerFile(laQueryFilesPath, true)
                 .AddEnvironmentVariables()
                 .Build();

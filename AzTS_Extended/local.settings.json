@@ -1,9 +1,12 @@
 {
   "IsEncrypted": false,
-    "Values": {
-        "ASPNETCORE_ENVIRONMENT": "Local",
-        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-        "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-        "APPINSIGHTS_INSTRUMENTATIONKEY": ""
-    }
+  "Values": {
+    "ASPNETCORE_ENVIRONMENT": "Local",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "APPINSIGHTS_INSTRUMENTATIONKEY": "",
+    "AzureStorageSettings__ResourceId": "",
+    "LAConfigurations__WorkspaceId": "",
+    "LAConfigurations__ResourceId": ""
+  }
 } 

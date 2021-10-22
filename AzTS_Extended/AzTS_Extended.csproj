@@ -18,6 +18,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.AzTS.Azure.Scanner" Version="0.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
         <None Update="appsettings.RingN.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
@@ -28,9 +32,6 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="Configurations\appsettings.json">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="Configurations\appsettings.Local.json">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="Configurations\LAQueries\Inv_GetAllSubscriptionWorkItemsToProcess.kql">

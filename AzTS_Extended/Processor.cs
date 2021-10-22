@@ -30,11 +30,12 @@ namespace AzTS_Extended
 
         public void Run([TimerTrigger("0 */60 0-12 * * *", RunOnStartup = true)] TimerInfo timer, ILogger log)
         {
-            string workItem = "{\"SubscriptionId\":\"<Insert_Subscription_ID_Here>\",\"Timestamp\":\"Sun, 01 Mar 2020 14:39:49 GMT\",\"JobId\":20200229,\"RetryCount\":0, \"IsRBACProcessed\": true}";
+            string workItem = "{\"SubscriptionId\":\"<subscriptionId>\",\"Timestamp\":\"Sun, 01 Mar 2020 14:39:49 GMT\",\"JobId\":20200229,\"RetryCount\":0, \"IsRBACProcessed\": true}";
             var workItemObject = JsonConvert.DeserializeObject<SubscriptionWorkItem>(workItem);
             workItemObject.IsRBACProcessed = false;
             _subscriptionItemProcessor._log = log;
-            _subscriptionItemProcessor.ProcessSubscriptionItems(workItemObject);
+           var controlResults = _subscriptionItemProcessor.ProcessSubscriptionItems(workItemObject);
+
         }
     }
 }
