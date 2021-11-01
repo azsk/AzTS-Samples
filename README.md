@@ -83,7 +83,29 @@ Steps to modify/add a control:
             }
         ]
         ```
-        > *Note*:  For **Id** above: If it is an existing control that you wish to modify, then use the same ID as used previously. If it is a new control, then follow a convention of a FeatureName followed by a *four* digit ID number. For example, "Storage1005" can be the ID for a new control implemented in Storage feature.
+        1. For **Id** above: 
+            * If it is an existing control that you wish to modify, then use the same ID as used previously. 
+            * If it is a new control, then follow a convention of a FeatureName followed by a *four* digit ID number. For example, "Storage1005" can be the ID for a new control implemented in Storage feature.
+        2. For **ControlID** above: Initial part of the control ID is pre-populated based on the service/feature and security domain you choose for the control (Azure_FeatureName_SecurityDomain_XXX). Please don't use spaces between words instead use underscore '_' to separate words in control ID. To see some of the examples of existing control IDs please check out this [list](https://github.com/azsk/AzTS-docs/tree/main/Control%20coverage#azure-services-supported-by-azts).
+        3. Keep **Enabled** switch to 'Yes'.
+        4. **DisplayName** is the user friendly name for the control.
+
+
+    > *Note*:  You can provide additional details/optional settings for the control as listed below.
+
+    |Settings| Description| Examples|
+    |-------------|------|---------|
+    |Automated| Whether the control is manual or automated| e.g. Yes/No (keep it Yes for policy based controls)|
+    |Description| A basic description on what the control is about| e.g. App Service must only be accessible over HTTPS. |
+    | Category| Generic security specification of the control.| e.g. Encrypt data in transit |
+    |Tags| Labels that denote the control being of a specific type or belonging to a specific domain | For e.g. Baseline, Automated etc.|
+    |Control Severity| The severity of the control| e.g. High: Should be remediated as soon as possible. Medium: Should be considered for remediation. Low: Remediation should be prioritized after high and medium.|
+    |Control Requirements| Prerequisites for the control.| e.g. Monitoring and auditing must be enabled and correctly configured according to prescribed organizational guidance|
+    |Rationale|  Logical intention for the added control | e.g. Auditing enables log collection of important system events pertinent to security. Regular monitoring of audit logs can help to detect any suspicious and malicious activity early and respond in a timely manner.|
+    |Recommendations| Steps or guidance on how to remediate non-compliant resources | e.g. Refer https://azure.microsoft.com/en-in/documentation/articles/key-vault-get-started/ for configuring Key Vault and storing secrets |
+    |Custom Tags| Tags can be used for filtering and referring controls in the future while reporting| e.g. Production, Phase2 etc. |
+    |Control Settings| Settings specific to the control to be provided for the scan | e.g. Required TLS version for all App services in your tenant (Note: For policy based contols this should be empty) |
+    |Comments | These comments show up in the changelog for the feature. | e.g. Added new policy based control for App Service |
 
 2. [**Control Evaluator:**](README.md#control-evaluator)
 	1. Copy _FeatureNameControlEvaluatorExt.cs_ and rename it accordingly. For example: StorageControlEvaluatorExt.cs
@@ -96,4 +118,3 @@ Steps to modify/add a control:
         }
         ```
     3. Add the control method according to the feature documentation.
-
