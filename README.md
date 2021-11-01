@@ -18,8 +18,9 @@ Org Policy Customization provides capabilities to modify existing controls and a
 
 This feature enhances AzTS Solution by enabling tenant security compliance owners to:
 1) Modify existing controls
-2) Add new controls
-3) Scan the controls locally [Stand-alone Solution]
+2) Add new controls of existing features
+3) Add new controls of new features (Coming soon)
+4) Scan the controls locally [Stand-alone Solution]
 
 In this document, we will look at how to set up org policy, how to make modifications and additions to the controls, and how to accomplish various common org policy customization for the scanner.
 
