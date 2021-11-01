@@ -5,7 +5,7 @@
 - [Modifying and customizing org policy](Readme.md#modifying-and-customizing-org-policy)
 - [Common Application of Org Policy Customization](Readme.common-application-of-org-policy-customization)
 
-## [Background](Readme.md#Background)
+## [Background](README.md#Background)
 
 The Azure Tenant Security Solution (AzTS) can be used to obtain visibility to cloud subscriptions and resource configuration across multiple subscriptions in an enterprise environment. 
 The AzTS is a logical progression of DevOps Kit which helps us move closer to an implementation of cloud security compliance solution using native security capabilities in Azure platform that are available today. Functionally, it is similar to running AzSK Continuous Assurance (CA) in central-scan mode.
