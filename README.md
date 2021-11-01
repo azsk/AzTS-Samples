@@ -117,4 +117,4 @@ Steps to modify/add a control:
             // Add control methods here        
         }
         ```
-    3. Add the control method according to the feature documentation.
+    3. Add the control method according to the [feature documentation](FeatureCoverage/README.md).
