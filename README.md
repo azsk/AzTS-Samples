@@ -1,9 +1,9 @@
-# [Org Policy Customization](Readme.md#org-policy-customization)
-- [Background](Readme.md#Background)
-- [Overview](Readme.md#Overview)
-- [Setting up org policy](Readme.md#setting-up-org-policy)
-- [Modifying and customizing org policy](Readme.md#modifying-and-customizing-org-policy)
-- [Common Application of Org Policy Customization](Readme.common-application-of-org-policy-customization)
+# [Org Policy Customization](README.md#org-policy-customization)
+- [Background](README.md#Background)
+- [Overview](README.md#Overview)
+- [Setting up org policy](README.md#setting-up-org-policy)
+- [Modifying and customizing org policy](README.md#modifying-and-customizing-org-policy)
+- [Common Application of Org Policy Customization](README.common-application-of-org-policy-customization)
 
 ## [Background](README.md#Background)
 
@@ -12,7 +12,7 @@ The AzTS is a logical progression of DevOps Kit which helps us move closer to an
 
 You can know more about AzTS [here](https://github.com/azsk/AzTS-docs).
 
-## [Overview](Readme.md#Overview)
+## [Overview](README.md#Overview)
 
 Org Policy Customization provides capabilities to modify existing controls and add new controls (for existing services supported by AzTS) to customize the AzTS for your organization as per your need. 
 
@@ -23,7 +23,7 @@ This feature enhances AzTS Solution by enabling tenant security compliance owner
 
 In this document, we will look at how to set up org policy, how to make modifications and additions to the controls, and how to accomplish various common org policy customization for the scanner.
 
-## [Setting up org policy](Readme.md#setting-up-org-policy)
+## [Setting up org policy](README.md#setting-up-org-policy)
 
 In this section, we will walk through the steps of setting up AzTS Scanner.
 
@@ -51,7 +51,7 @@ This will install the required [NuGet packages](https://www.nuget.org/packages/M
 
 Next, we will look into how to modify an existing control or add a new control through this setup.
 
-## [Modifying and customizing org policy](Readme.md#modifying-and-customizing-org-policy)
+## [Modifying and customizing org policy](README.md#modifying-and-customizing-org-policy)
 
 The typical workflow for all control changes will remain same and will involve the following basic steps:
 1. Make modifications to the existing control metadata (Json files).
@@ -59,7 +59,7 @@ The typical workflow for all control changes will remain same and will involve t
 3. Build and Run
 
 Steps to modify/add a control:
-1. [**Control JSON:**](Readme.md#control-json)
+1. [**Control JSON:**](README.md#control-json)
     1. Copy _FeatureNameExt.json_ file and rename it accordingly. For example: StorageExt.json
 	2. Fill the parameters according to the feature. For example: 
         ``` JSON
@@ -84,7 +84,7 @@ Steps to modify/add a control:
         ```
         > *Note*:  For **Id** above: If it is an existing control that you wish to modify, then use the same ID as used previously. If it is a new control, then follow a convention of a FeatureName followed by a *four* digit ID number. For example, "Storage1005" can be the ID for a new control implemented in Storage feature.
 
-2. [**Control Evaluator:**](Readme.md#control-evaluator)
+2. [**Control Evaluator:**](README.md#control-evaluator)
 	1. Copy _FeatureNameControlEvaluatorExt.cs_ and rename it accordingly. For example: StorageControlEvaluatorExt.cs
 	2. Change the FeatureNameEvaluatorExt and FeatureNameControlEvaluator according to the baseControlEvaluator name (line 13) as shown below.
         ``` CS
