@@ -59,10 +59,8 @@ namespace AzTS_Extended
                 throw new ArgumentException("App setting not found.");
             }
 
-            var laQueryFilesPath = Path.Combine(configurationRootPath, "LAQueries");
             _configuration = builder.ConfigurationBuilder
                 .AddJsonFile(Path.Combine(configurationRootPath, "appsettings.json"), optional: false, reloadOnChange: true)
-                .AddKeyPerFile(laQueryFilesPath, true)
                 .AddEnvironmentVariables()
                 .Build();
         }
