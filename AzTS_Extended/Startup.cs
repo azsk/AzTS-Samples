@@ -17,8 +17,11 @@ namespace AzTS_Extended
     using Microsoft.AzSK.ATS.Extensions.Graph;
     using Microsoft.AzSK.ATS.Extensions.HttpHelper;
     using Microsoft.AzSK.ATS.Extensions.Models;
+    using Microsoft.AzSK.ATS.Extensions.PolicyStateHelper;
     using Microsoft.AzSK.ATS.Extensions.PollyPolicyHelper;
+    using Microsoft.AzSK.ATS.Extensions.ResourceGraphHelper;
     using Microsoft.AzSK.ATS.Extensions.Storage;
+    using Microsoft.AzSK.ATS.Extensions.SubscriptionHelper;
     using Microsoft.AzSK.ATS.ProcessSubscriptions.Processors;
     using Microsoft.AzSK.ATS.ProcessSubscriptions.Repositories;
     using Microsoft.AzSK.ATS.ProcessSubscriptions.Repositories.ResourceRepositories;
@@ -45,18 +48,12 @@ namespace AzTS_Extended
             FunctionsHostBuilderContext context = builder.GetContext();
 
             // Get configurations paths
-            // var azure_root = $"{Environment.GetEnvironmentVariable("HOME")}/site/wwwroot";
             string configurationRootPath = Path.Combine(context.ApplicationRootPath, "Configurations");
             var temp = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            /*if (!Directory.Exists(azure_root))
-            {
-                azure_root = Directory.GetCurrentDirectory();
-                configurationRootPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory() + @"\..\..\..\..\Configurations\Extended"));
-            }*/
 
             if (string.IsNullOrWhiteSpace(configurationRootPath))
             {
-                throw new ArgumentException("App setting not found.");
+                throw new ArgumentException("App setting not found");
             }
 
             _configuration = builder.ConfigurationBuilder
@@ -97,18 +94,14 @@ namespace AzTS_Extended
             services.Configure<AzureControlScanExceptionSettings>(_configuration.GetSection(AzureControlScanExceptionSettings.ConfigName));
             services.Configure<AADClientAppDetails>(_configuration.GetSection(AADClientAppDetails.ConfigName));
             services.Configure<AppMetadata>(_configuration.GetSection(AppMetadata.ConfigName));
-
-            // TODO: Check if this can be added
+            services.Configure<ARGConfigurations>(_configuration.GetSection(ARGConfigurations.ConfigName));
             services.Configure<RepositorySettings>(_configuration.GetSection(RepositorySettings.ConfigName));
-
             services.Configure<RuleEngineSettings>(_configuration.GetSection(RuleEngineSettings.ConfigName));
 
             // Notes: Named options pattern used for mapping configurations with strongly typed properties/classes
             services.Configure<WorkItemProcessorSettings>(_configuration.GetSection(WorkItemProcessorSettings.ConfigName));
 
             // Helper classes registration
-
-            // services.AddHttpClient().AddPolicyRegistry();
             services.AddSingleton<AzureHttpClientHelper>();
             services.AddSingleton<LAHttpClientHelper>();
             services.AddSingleton<AzureStorageProvider>();
@@ -125,19 +118,20 @@ namespace AzTS_Extended
             services.AddScoped<CustomException>();
             services.AddSingleton<AIHttpClientHelper>();
             services.AddSingleton<AutoUpdaterEventProcessor>();
+            services.AddSingleton<IDiagnosticSettings, AzureDiagnosticSettingsHelper>();
 
             // Repository classes registration
             services.AddSingleton<IControlConfiguratoinProvider, ControlConfigurationProvider>();
+            services.AddScoped<IResourceGraphProvider, ResourceGraphProvider>();
+            services.AddScoped<IPolicyStateHelper, PolicyStateHelper>();
             services.AddScoped<SubscriptionItemProcessor>();
             services.AddScoped<SubscriptionPolicySummary>();
             services.AddScoped<SubscriptionOwnerRepository>();
             services.AddScoped<ARMSubscriptionResourceInventory>();
             services.AddScoped<SubscriptionCoreRepository>();
-
             services.AddScoped<ServiceControlExceptionProcessor>();
             services.AddScoped<ControlEvaluationProcessor>();
             services.AddScoped<SecureScoreAssessmentRepository>();
-
             services.AddScoped<SubscriptionPolicyStateRepository>();
             services.AddScoped<SubscriptionPolicyAssignmentsRepository>();
             services.AddScoped<SecureScoreAssessmentRepository>();
@@ -147,17 +141,7 @@ namespace AzTS_Extended
             services.AddScoped<SecurityCenterRepository>();
             services.AddSingleton<ITSRoleDefinition, TSRoleDefinition>();
             services.AddScoped<IEndpointProvider, EndpointProvider>();
-            // To handle "Scope disposed{no name, Parent=disposed{no name, Parent=disposed{no name}}} is disposed and scoped instances are disposed and no longer available" exception.
-            // TODO: Replace the timespan as need. eg(Timeout.InfiniteTimeSpan or TimeSpan.FromHours(2) for 2 hrs)
-            //_policyRegistry = services.AddPolicyRegistry();
-            //PolicyHelper.CreateAndRegisterPolicies(_configuration, _policyRegistry);
             services.AddHttpClient(HttpClientConfig.HttpClientName).SetHandlerLifetime(TimeSpan.FromHours(2));
-
-            //    .AddPolicyHandler(httpRequestMessage =>
-            //{
-            //    return _policyRegistry.Get<Polly.IAsyncPolicy<HttpResponseMessage>>(PolicyHelper.PolicyName.WaitAndRetryPolicy);
-            //});
-
 
         }
     }
