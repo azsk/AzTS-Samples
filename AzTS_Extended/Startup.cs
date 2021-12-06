@@ -18,8 +18,6 @@ namespace AzTS_Extended
     using Microsoft.AzSK.ATS.Extensions.HttpHelper;
     using Microsoft.AzSK.ATS.Extensions.Models;
     using Microsoft.AzSK.ATS.Extensions.PolicyStateHelper;
-    using Microsoft.AzSK.ATS.Extensions.PollyPolicyHelper;
-    using Microsoft.AzSK.ATS.Extensions.ResourceGraphHelper;
     using Microsoft.AzSK.ATS.Extensions.Storage;
     using Microsoft.AzSK.ATS.Extensions.SubscriptionHelper;
     using Microsoft.AzSK.ATS.ProcessSubscriptions.Processors;
@@ -122,7 +120,6 @@ namespace AzTS_Extended
 
             // Repository classes registration
             services.AddSingleton<IControlConfiguratoinProvider, ControlConfigurationProvider>();
-            services.AddScoped<IResourceGraphProvider, ResourceGraphProvider>();
             services.AddScoped<IPolicyStateHelper, PolicyStateHelper>();
             services.AddScoped<SubscriptionItemProcessor>();
             services.AddScoped<SubscriptionPolicySummary>();
