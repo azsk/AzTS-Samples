@@ -34,12 +34,6 @@
         <None Update="Configurations\appsettings.json">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="Configurations\LAQueries\Inv_GetAllSubscriptionWorkItemsToProcess.kql">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="Configurations\LAQueries\Inv_SubInv_GetExternalAccountRBAC.kql">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
         <None Update="host.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>

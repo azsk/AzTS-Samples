@@ -71,7 +71,6 @@ namespace AzTS_Extended
             // Add configurations from app settings
 
             // Enable inbuilt services
-            // services.AddHttpClient();
             services.AddLogging();
             services.AddApplicationInsightsTelemetry();
             services.AddFeatureManagement(_configuration);
