@@ -22,15 +22,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="appsettings.RingN.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="appsettings.Developmenttmp.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="appsettings.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
         <None Update="Configurations\appsettings.json">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
