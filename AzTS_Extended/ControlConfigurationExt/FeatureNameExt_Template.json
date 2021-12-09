@@ -1,0 +1,13 @@
+{
+  "FeatureName": "", // Represents Feature/Service name
+  "Controls": [
+    {
+      "ControlID": "", // Represents human friendly control Id. The format used is Azure_<FeatureName>_<Category>_<ControlName>
+      "Id": "", // Represents internal ID and should be unique. Since the ControlID can be modified, this internal ID ensures that we have a unique link to all the control results evaluation.
+      "Automated": "Yes", // Indicates whether the given control is Manual/Automated.
+      "MethodName": "", // Represents the Control method that is responsible to evaluate this control. It should be present inside the feature SVT associated with this control.
+      "DisplayName": "", // Represents human friendly name for the control.
+      "Enabled": false // Defines whether the control is enabled or not.
+    }
+  ]
+}
