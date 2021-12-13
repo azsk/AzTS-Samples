@@ -1,0 +1,22 @@
+{
+  "version": "2.0",
+  "extensions": {
+    "queues": {
+      "visibilityTimeout": "01:00:00"
+    }
+  },
+  "logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Information",
+      "System.Net.Http": "None"
+    },
+    "applicationInsights": {
+      //"samplingExcludedTypes": "Request",
+      "samplingSettings": {
+        "isEnabled": false
+      }
+    }
+  },
+  "functionTimeout": "00:09:00"
+}
