@@ -31,7 +31,7 @@ namespace AzTS_Extended
         public void Run([TimerTrigger("0 */60 0-12 * * *", RunOnStartup = true)] TimerInfo timer, ILogger log)
         {
             // **Remember**: Before deploying, comment the `line 31` and `line 34` and comment out the `line 29` to make the *Run* function as queue-triggered instead of timer-triggered which is done for local testing purposes. 
-            string workItem = "{\"SubscriptionId\":\"<subscriptionId>\",\"Timestamp\":\"Sun, 01 Mar 2020 14:39:49 GMT\",\"JobId\":20200229,\"RetryCount\":0, \"IsRBACProcessed\": true}";
+            string workItem = "{\"SubscriptionId\":\"<subscriptionId>\"}";
             var workItemObject = JsonConvert.DeserializeObject<SubscriptionWorkItem>(workItem);
             workItemObject.IsRBACProcessed = false;
             _subscriptionItemProcessor._log = log;
